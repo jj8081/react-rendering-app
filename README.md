@@ -1,6 +1,41 @@
 # react-rendering-app
 Technical Assignment: Nextflow Schema Parsing and React UI Rendering
 
+The project was developed using Typescript and React.
+
+# Clarifications
+
+1_ URL used: The fetching of the json file is done through https://raw.github.com/nf-core/scrnaseq/2.4.1/nextflow_schema.json (instead of https://github.com/nf-core/scrnaseq/blob/2.4.1/nextflow_schema.json) sicne the former URL serves the raw json file.
+
+# Current issues:
+
+1_ Fetching of the JSON file from React is blocked by CORS policy. Trials were done adding header values but were unsuccessful. The CORS sisue was not observed when fetching the JSON file running the Typescrypt code outside of React. This at this time stops the rendering tests.
+
+2_ Current implementation uses Typescript interfaces, which can be seen in file src/json_to_ts_interfaces.tsx. These interfaces are specific to the JSON file in https://github.com/nf-core/scrnaseq/blob/2.4.1/nextflow_schema.json. A required improvement will be to auotame the generation of those interfaces for any JSON file.
+
+3_ Page rendering is stopped because of the CORS issue at this time.
+
+4_ Form and Field validations are missing. 
+
+# Pre-requiresites
+
+The following needs to be installed prior to run the program:
+
+- Node
+- Typescript
+- node-fetch
+- React
+
+# How to Run The code
+
+1_ Clone the repository. The following command can be used:
+   git clone https://github.com/jj8081/react-rendering-app.git
+
+2_ From the project directory run 'npm start'. Note: at this time a fectch failure is observed because of the CORS issue, as mention in the "Current Issues" section above.
+
+
+Text below is generic React instructions.
+  
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
