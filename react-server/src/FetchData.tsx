@@ -11,16 +11,19 @@ function FetchDataDisplay() {
         setState('loading');
         async function fetchData() {            
             
-            await fetch('https://raw.github.com/nf-core/scrnaseq/2.4.1/nextflow_schema.json', 
-            { headers: {
-                'Accept': 'application/json',
-                'Access-Control-Allow-Origin': 'http://localhost:3000',
+            await fetch('/cors', 
+            { 
+                mode:'cors',
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
             }})
-            .then((res) => {
-                var data = (res.json()) as Promise<Root>;
-                console.log(res.json());
+            .then(async (res) => {
+                const jsonData = (await res.json()) as Promise<Root>;                
+                console.log(jsonData);
                 setState('success');                
-                setResponseData(data.toString());
+                setResponseData(jsonData.toString());
             })
             .catch((err) => {
                 console.error('Error:', err);
