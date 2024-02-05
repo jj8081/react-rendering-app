@@ -7,15 +7,18 @@ The project was developed using Typescript and React.
 
 1_ URL used: The fetching of the json file is done through https://raw.github.com/nf-core/scrnaseq/2.4.1/nextflow_schema.json (instead of https://github.com/nf-core/scrnaseq/blob/2.4.1/nextflow_schema.json) sicne the former URL serves the raw json file.
 
-# Current issues:
+# Current issues
 
-1_ Fetching of the JSON file from React is blocked by CORS policy. Trials were done adding header values but were unsuccessful. The CORS sisue was not observed when fetching the JSON file running the Typescrypt code outside of React. This at this time stops the rendering tests.
+1_ Webpage displays only partial content of the original JSON file at this time. The crrent implementation uses a String to pass the JSON content when using React useState approach. The ideal solution would be to pass a Root object instead but it was not allowed by React so a String approach was used. 
+
+2_ Form and Field validations are missing.
+
+# Enhancement Items
+
+1_ To avoid the CORS issue when fetching a JSON file from React a proxy server ( code in cors_server/) is used. This proxy server is expected to provide the json file required, which in this case nextflow_schema.json. A possible enhancement will be to automatically doanload the json required from any website and make it abvailable to the React server.
 
 2_ Current implementation uses Typescript interfaces, which can be seen in file src/json_to_ts_interfaces.tsx. These interfaces are specific to the JSON file in https://github.com/nf-core/scrnaseq/blob/2.4.1/nextflow_schema.json. A required improvement will be to auotame the generation of those interfaces for any JSON file.
 
-3_ Page rendering is stopped because of the CORS issue at this time.
-
-4_ Form and Field validations are missing. 
 
 # Pre-requiresites
 
@@ -25,13 +28,30 @@ The following needs to be installed prior to run the program:
 - Typescript
 - node-fetch
 - React
+- cors
+- express (express is used for the cors-server)
 
-# How to Run The code
+To install Node please follow the instruction on the webpage : https://nodejs.org/en/download.
+To install TypeScript please refer to https://www.typescriptlang.org/download.
+To instal the other required prerequisites please run the command 'npm i <tool name>'.
+
+
+# How to Run The Project
+
+The project is composed of two components: cors server and React server. The code for each component is included in its corresponding project subdirectory (/cors-server and /react-server/). 
 
 1_ Clone the repository. The following command can be used:
    git clone https://github.com/jj8081/react-rendering-app.git
 
-2_ From the project directory run 'npm start'. Note: at this time a fectch failure is observed because of the CORS issue, as mention in the "Current Issues" section above.
+2_ Open a terminal and go to the /cors-server directory. There run the command 'node app'. The cors server suould start and you should see the message 'Listening on port 8080'.
+
+3_ Open a second terminal and go to the /react-server directory. There run the command 'npm start'. You should see multiple messages including the message 'You can now view react-rendering-app in the browser.' and a message indicating the url where the react server is running (i.e. Local: http://localhost:3000). A browser window should open at that address and you will see a string message that includes the initial contents of the JSON file.
+
+
+# How to Stop The Project
+
+Please type 'Control + C' on each of the two terminals open.
+
 
 
 Text below is generic React instructions.
