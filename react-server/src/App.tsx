@@ -1,14 +1,11 @@
 import React from 'react';
 import './App.css';
-import {Root} from "./json_to_ts_interfaces"
 import FetchDataDisplay from "./FetchData";
 
 
-function App() { 
-  //  fetchData();
+function App() {
   return (    
-    <div className="App">
-            <h1>Table</h1>
+    <div className="App">            
             <FetchDataDisplay />
         </div>
   );

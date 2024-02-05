@@ -20,10 +20,19 @@ function FetchDataDisplay() {
                     'Access-Control-Allow-Origin': '*',
             }})
             .then(async (res) => {
-                const jsonData = (await res.json()) as Promise<Root>;                
+                const jsonData = (await res.json()) as Root;
                 console.log(jsonData);
-                setState('success');                
-                setResponseData(jsonData.toString());
+                setState('success');
+                let title = 'Title: ' + (await jsonData).title;
+                let description = "Description: " +  (await jsonData).description;
+                let sampleDefinition = "Sample Defition: " + (await jsonData).definitions.alevin_options;
+                let sampleDefinitionDescription = "Sample Definition Description: " + (await jsonData).definitions.alevin_options.description;
+                let sampleDefinitionProperty1 = "Sample Definition Property Description: " + (await jsonData).definitions.alevin_options.properties.salmon_index.description;
+                let sampleDefinitionProperty2 = "Sample Definition Property Description: " + (await jsonData).definitions.alevin_options.properties.simpleaf_rlen.description;
+                let sampleDefinitionProperty3 = "Sample Definition Property Description: " + (await jsonData).definitions.alevin_options.properties.txp2gene.description;
+
+                let displayStr = title + description + sampleDefinition + sampleDefinitionDescription + sampleDefinitionProperty1 +   sampleDefinitionProperty2 + sampleDefinitionProperty3;
+                setResponseData(displayStr);                
             })
             .catch((err) => {
                 console.error('Error:', err);
@@ -40,18 +49,17 @@ function FetchDataDisplay() {
             </h1>
             
         );
-    return (
+    return (        
         <div>
             <div>
                 {state === 'loading' ? (
                     <h1>Loading...</h1>
                 ) : (
-                    <h1>{responseData}</h1>
+                    <h6>{responseData}</h6>
                 )}
             </div>
-        </div>
+        </div>        
     );
 }
 
 export default FetchDataDisplay;
-
