@@ -1,4 +1,5 @@
 # react-rendering-app
+
 Technical Assignment: Nextflow Schema Parsing and React UI Rendering
 
 The project was developed using Typescript and React.
@@ -7,7 +8,7 @@ The project was developed using Typescript and React.
 
 1_ URL used: The fetching of the json file is done through https://raw.github.com/nf-core/scrnaseq/2.4.1/nextflow_schema.json (instead of https://github.com/nf-core/scrnaseq/blob/2.4.1/nextflow_schema.json) sicne the former URL serves the raw json file.
 
-# Current issues
+# Current Issues
 
 1_ Webpage displays only partial content of the original JSON file at this time. The crrent implementation uses a String to pass the JSON content when using React useState approach. The ideal solution would be to pass a Root object instead but it was not allowed by React so a String approach was used. 
 
