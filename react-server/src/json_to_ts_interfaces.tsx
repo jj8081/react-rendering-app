@@ -1,12 +1,12 @@
 // Interfaces
-export interface Root {
+export interface CustomJSONInterface {
     $schema: string
     $id: string
     title: string
     description: string
     type: string
     definitions: Definitions
-    allOf: AllOf[]
+    allOf: AllOf[]    
 }
 
 export interface Definitions {

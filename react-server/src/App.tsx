@@ -4,8 +4,8 @@ import FetchDataDisplay from "./FetchData";
 
 
 function App() {
-  return (    
-    <div className="App">            
+  return (
+    <div className="App">
             <FetchDataDisplay />
         </div>
   );
