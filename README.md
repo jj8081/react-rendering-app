@@ -34,7 +34,7 @@ To install Node please follow the instruction on the webpage : https://nodejs.or
 
 To install TypeScript please refer to https://www.typescriptlang.org/download.
 
-To install the cors, express and fetch-node modules please run the command 'npm i [npm module or package name]'. To install express please run the commen in the /cors-server directory.
+To install the cors, express and fetch-node modules please run the command 'npm i [npm module or package name]'. To install express please run that command in the /cors-server directory.
 
 
 # How to Run The Project
